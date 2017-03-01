@@ -5,6 +5,21 @@ def main():
     # for Windows users the path specify the path as "c:\\users\\alark1\\Pictures\\usfca.png"
     inputImage = Image.open('/Users/tjuntunen/desktop/project2/usfca.png')
     imageWidth, imageHeight = inputImage.size
+
+#	# Menu
+    print("Choose one of the following: ")
+    print("1. Copy")
+    print("2. Flip Vertical")
+    print("3. Flip horizontal")
+    print("4. Lighten")
+    print("5. Darken")
+
+    # Input validation
+    userChoice = int(input("What do you want to do? (1-5): "))
+    while userChoice > 5 or userChoice < 1:
+    	print("You must choose a number")
+    	userChoice = int(input("What do you want to do? (1-5): "))
+
     if userChoice == 1:
     	copyImage(inputImage, imageWidth, imageHeight)
     if userChoice == 2:
@@ -79,21 +94,5 @@ def darken(amount, inputImage, imageWidth, imageHeight):
             darkenOutput.putpixel((i, j), darkenedPixelColors)
     darkenOutput.save("/Users/tjuntunen/desktop/project2/darker.png")
     print("Image darkened")
-
-# Menu
-print("Choose one of the following: ")
-print("1. Copy")
-print("2. Flip Vertical")
-print("3. Flip Horizontal")
-print("4. Lighten")
-print("5. Darken")
-
-# User choice
-userChoice = int(input("What do you want to do? (1-5): "))
-
-# Input validation
-while userChoice > 5 or userChoice < 1:
-	print("You must choose a number from 1-5.")
-	userChoice = int(input("What do you want to do? (1-5): "))
 
 main()
