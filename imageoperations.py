@@ -26,7 +26,7 @@ def copyImage(inputImage, imageWidth, imageHeight):
             pixelColors = inputImage.getpixel((i, j))
             copyImageOutput.putpixel((i, j), pixelColors)
     copyImageOutput.save("/Users/tjuntunen/desktop/project2/copy.png")
-    print("Image copied successfully!")
+    print("Image copied")
 
 def flipVertical(inputImage, imageWidth, imageHeight):
     flippedImageOutput = Image.new('RGB', (imageWidth, imageHeight), 'white')
@@ -36,7 +36,7 @@ def flipVertical(inputImage, imageWidth, imageHeight):
             pixelColors = inputImage.getpixel((i, j))
             flippedImageOutput.putpixel((i, flippedHeight), pixelColors)
     flippedImageOutput.save("/Users/tjuntunen/desktop/project2/verticalflip.png")
-    print("Image flipped vertically successfully!")
+    print("Image flipped vertically")
 
 def flipHorizontal(inputImage, imageWidth, imageHeight):
     flipHorizontalOutput = Image.new('RGB', (imageWidth, imageHeight), 'white')
@@ -46,7 +46,7 @@ def flipHorizontal(inputImage, imageWidth, imageHeight):
             pixelColors = inputImage.getpixel((i, j))
             flipHorizontalOutput.putpixel((flippedWidth, j), pixelColors)
     flipHorizontalOutput.save("/Users/tjuntunen/desktop/project2/horizontalflip.png")
-    print("Image flipped horizontally successfully!")
+    print("Image flipped horizontally")
 
 def lighten(amount, inputImage, imageWidth, imageHeight):
     lightenOutput = Image.new('RGB', (imageWidth, imageHeight), 'white')
@@ -62,7 +62,7 @@ def lighten(amount, inputImage, imageWidth, imageHeight):
             lightenedPixelColors = (newRed, newGreen, newBlue)
             lightenOutput.putpixel((i, j), lightenedPixelColors)
     lightenOutput.save("/Users/tjuntunen/desktop/project2/lighter.png")
-    print("Image lightened successfully!")
+    print("Image lightened")
 
 def darken(amount, inputImage, imageWidth, imageHeight):
     darkenOutput = Image.new('RGB', (imageWidth, imageHeight), 'white')
@@ -78,9 +78,10 @@ def darken(amount, inputImage, imageWidth, imageHeight):
             darkenedPixelColors = (newRed, newGreen, newBlue)
             darkenOutput.putpixel((i, j), darkenedPixelColors)
     darkenOutput.save("/Users/tjuntunen/desktop/project2/darker.png")
-    print("Image darkened successfully!")
+    print("Image darkened")
 
 # Menu
+print("Choose one of the following: ")
 print("1. Copy")
 print("2. Flip Vertical")
 print("3. Flip Horizontal")
