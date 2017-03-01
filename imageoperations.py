@@ -17,7 +17,7 @@ def main():
 
     # Input validation
     while userChoice > 5 or userChoice < 1:
-    	print("You must choose a number")
+    	print("You must choose a number between 1 and 5")
     	userChoice = int(input("What do you want to do? (1-5): "))
 
     if userChoice == 1:
