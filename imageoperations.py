@@ -6,16 +6,16 @@ def main():
     inputImage = Image.open('/Users/tjuntunen/desktop/project2/usfca.png')
     imageWidth, imageHeight = inputImage.size
 
-#	# Menu
+	# Menu
     print("Choose one of the following: ")
     print("1. Copy")
     print("2. Flip Vertical")
     print("3. Flip horizontal")
     print("4. Lighten")
     print("5. Darken")
+    userChoice = int(input("What do you want to do? (1-5): "))
 
     # Input validation
-    userChoice = int(input("What do you want to do? (1-5): "))
     while userChoice > 5 or userChoice < 1:
     	print("You must choose a number")
     	userChoice = int(input("What do you want to do? (1-5): "))
