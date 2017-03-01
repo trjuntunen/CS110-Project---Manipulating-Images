@@ -28,7 +28,6 @@ def copyImage(inputImage, imageWidth, imageHeight):
     copyImageOutput.save("/Users/tjuntunen/desktop/project2/copy.png")
     print("Image copied successfully!")
 
-# Flips the image vertically
 def flipVertical(inputImage, imageWidth, imageHeight):
     flippedImageOutput = Image.new('RGB', (imageWidth, imageHeight), 'white')
     for i in range(imageWidth):
