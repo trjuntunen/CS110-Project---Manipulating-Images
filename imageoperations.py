@@ -171,8 +171,8 @@ def rotate(inputImage, imageWidth, imageHeight):
         newCol = i
         for j in range(imageHeight):
             newRow = j
-            flippedHeight = imageHeight - j - 1
-            pixelColors = inputImage.getpixel((i, flippedHeight))
+            flippedWidth = imageWidth - i - 1
+            pixelColors = inputImage.getpixel((flippedWidth, j))
             rotateOutput.putpixel((newRow, newCol), pixelColors)
     rotateOutput.save("/Users/tjuntunen/desktop/project2/rotate.png")
     print("Image rotated")
