@@ -17,14 +17,15 @@ def main():
     print("6. Scroll horizontal")
     print("7. Scroll vertical")
     print("8. Grey scale")
+    print("9. Rotate")
     print("-----------------------------")
 
-    userChoice = int(input("What do you want to do? (1-8): "))
+    userChoice = int(input("What do you want to do? (1-9): "))
 
     # Input validation
-    while userChoice > 8 or userChoice < 1:
-    	print("You must choose a number between 1 and 8")
-    	userChoice = int(input("What do you want to do? (1-8): "))
+    while userChoice > 9 or userChoice < 1:
+    	print("You must choose a number between 1 and 9")
+    	userChoice = int(input("What do you want to do? (1-9): "))
 
     if userChoice == 1:
     	copyImage(inputImage, imageWidth, imageHeight)
@@ -46,7 +47,8 @@ def main():
     	scrollVertical(numpixels, inputImage, imageWidth, imageHeight)
     if userChoice == 8:
     	makeGreyscale(inputImage, imageWidth, imageHeight)
-
+    if userChoice == 9:
+    	rotate(inputImage, imageWidth, imageHeight)
 
 # Creates a copy of an image given the image variable, its width, and height
 def copyImage(inputImage, imageWidth, imageHeight):
@@ -161,5 +163,18 @@ def makeGreyscale(inputImage, imageWidth, imageHeight):
 			makeGreyscaleOutput.putpixel((i, j), greyPixelColors)
 	makeGreyscaleOutput.save("/Users/tjuntunen/desktop/project2/greyscale.png")
 	print("Image greyscaled")
+
+def rotate(inputImage, imageWidth, imageHeight):
+    rotateOutput = Image.new('RGB', (imageHeight, imageWidth), 'white')
+    
+    for i in range(imageWidth):
+        newCol = i
+        for j in range(imageHeight):
+            newRow = j
+            flippedHeight = imageHeight - j - 1
+            pixelColors = inputImage.getpixel((i, flippedHeight))
+            rotateOutput.putpixel((newRow, newCol), pixelColors)
+    rotateOutput.save("/Users/tjuntunen/desktop/project2/rotate.png")
+    print("Image rotated")
 
 main()
