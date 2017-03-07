@@ -4,6 +4,7 @@ def main():
     # Change the path in Line 6 to the path of the image you want to use as input 
     # for Windows users the path specify the path as "c:\\users\\alark1\\Pictures\\usfca.png"
     inputImage = Image.open('/Users/tjuntunen/desktop/project2/usfca.png')
+
     imageWidth, imageHeight = inputImage.size
 
 	# Menu
@@ -18,14 +19,15 @@ def main():
     print("7. Scroll vertical")
     print("8. Grey scale")
     print("9. Rotate")
+    print("10. Swap Corners")
     print("-----------------------------")
 
-    userChoice = int(input("What do you want to do? (1-9): "))
+    userChoice = int(input("What do you want to do? (1-10): "))
 
     # Input validation
-    while userChoice > 9 or userChoice < 1:
-    	print("You must choose a number between 1 and 9")
-    	userChoice = int(input("What do you want to do? (1-9): "))
+    while userChoice > 10 or userChoice < 1:
+    	print("You must choose a number between 1 and 10")
+    	userChoice = int(input("What do you want to do? (1-10): "))
 
     if userChoice == 1:
     	copyImage(inputImage, imageWidth, imageHeight)
@@ -49,6 +51,8 @@ def main():
     	makeGreyscale(inputImage, imageWidth, imageHeight)
     if userChoice == 9:
     	rotate(inputImage, imageWidth, imageHeight)
+    if userChoice == 10:
+        swapCorners(inputImage, imageWidth, imageHeight)
 
 # Creates a copy of an image given the image variable, its width, and height
 def copyImage(inputImage, imageWidth, imageHeight):
@@ -168,13 +172,43 @@ def rotate(inputImage, imageWidth, imageHeight):
     rotateOutput = Image.new('RGB', (imageHeight, imageWidth), 'white')
     
     for i in range(imageWidth):
-        newCol = i
+        newColumn = i
         for j in range(imageHeight):
             newRow = j
             flippedWidth = imageWidth - i - 1
             pixelColors = inputImage.getpixel((flippedWidth, j))
-            rotateOutput.putpixel((newRow, newCol), pixelColors)
+            rotateOutput.putpixel((newRow, newColumn), pixelColors)
     rotateOutput.save("/Users/tjuntunen/desktop/project2/rotate.png")
     print("Image rotated")
+
+def swapCorners(inputImage, imageWidth, imageHeight):
+    swapCornersOutput = Image.new('RGB', (imageWidth, imageHeight), 'white')
+
+    cornerWidth = imageWidth // 2
+    cornerHeight = imageHeight // 2
+
+    for i in range(imageWidth):
+        for j in range(cornerHeight, imageHeight):
+            pixelColors = inputImage.getpixel((i, j))
+            swapCornersOutput.putpixel((i, j - cornerHeight), pixelColors)
+    for i in range(imageWidth):
+        for j in range(cornerHeight):
+            pixelColors = inputImage.getpixel((i, j))
+            swapCornersOutput.putpixel((i, imageHeight - cornerHeight + j), pixelColors)
+    swapCornersOutput.save("/Users/tjuntunen/desktop/project2/cornerswap.png")
+
+    inputImage = Image.open("/Users/tjuntunen/desktop/project2/cornerswap.png")
+
+    for i in range(cornerWidth, imageWidth):
+        for j in range(imageHeight):
+            pixelColors = inputImage.getpixel((i, j))
+            swapCornersOutput.putpixel((i - cornerWidth, j), pixelColors)
+
+    for i in range(cornerWidth):
+        for j in range(imageHeight):
+            pixelColors = inputImage.getpixel((i, j))
+            swapCornersOutput.putpixel((imageWidth - cornerWidth + i, j), pixelColors)
+    swapCornersOutput.save("/Users/tjuntunen/desktop/project2/cornerswap.png")
+    print("Corners swapped")
 
 main()
