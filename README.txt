@@ -3,8 +3,5 @@ Prof. Alark
 6 March 2017
 Project 2 - Image Processing
 
-I used only one source to complete this lab, Stack Overflow, to learn how to reference individual RGB values with indexing in order to flip images. I worked with a small team to figure out the swapCorners() function, the team included Devon, Tristan, Sophie, and Nikko.
-
-
-Stack Overflow Link = http://stackoverflow.com/questions/14182642/flipping-image-mirror-image
+A Python project which contains various functions for manipulating images. Such as swapping corners, darkening, lightening, black and white, flipping horizontally, rotating, scrolled horizontally and vertically, and flipping.
 
